@@ -34,7 +34,7 @@ Run_Function.array.PLITF = ( array ) => { // PLITF = Put Last Item to First
 
 };
 
-Run_Function.array.ATCNF = ( array ) => { // ATCN = Array to Class Name Format
+Run_Function.array.ATCNF = ( array ) => { // ATCNF = Array to Class Name Format
 
     var className = '';
     var CLASSname = '';
@@ -50,7 +50,7 @@ Run_Function.array.ATCNF = ( array ) => { // ATCN = Array to Class Name Format
 
 };
 
-Run_Function.array.RAPEFA = ( array, item_no ) => { // RAPEFA = Remove a particular item from array
+Run_Function.array.RAPEFA = ( array, item_no ) => { // RAPEFA = Remove a particular element from array
 
     var new_array = new Array();
 
