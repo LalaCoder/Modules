@@ -1,10 +1,10 @@
-var Run_Function = new Object();
-Run_Function.maths = new Object();
-Run_Function.array = new Object();
+export var Run_Function = new Object();
+export Run_Function.maths = new Object();
+export Run_Function.array = new Object();
 
-Run_Function.maths.random = ( min, max ) => { max += 1; return ( Math.random() * ( max - min ) + min ); };
+export Run_Function.maths.random = ( min, max ) => { max += 1; return ( Math.random() * ( max - min ) + min ); };
 
-Run_Function.say = ( Statement, time_seconds, at_x_px, at_y_px ) => {
+export Run_Function.say = ( Statement, time_seconds, at_x_px, at_y_px ) => {
 
     let say_box = document.createElement('span');
     document.body.appendChild( say_box );
@@ -22,7 +22,7 @@ Run_Function.say = ( Statement, time_seconds, at_x_px, at_y_px ) => {
 
 };
 
-Run_Function.array.PLITF = ( array ) => { // PLITF = Put Last Item to First
+export Run_Function.array.PLITF = ( array ) => { // PLITF = Put Last Item to First
 
     var temp_array = new Array();
 
@@ -34,7 +34,7 @@ Run_Function.array.PLITF = ( array ) => { // PLITF = Put Last Item to First
 
 };
 
-Run_Function.array.ATCNF = ( array ) => { // ATCNF = Array to Class Name Format
+export Run_Function.array.ATCNF = ( array ) => { // ATCNF = Array to Class Name Format
 
     var className = '';
     var CLASSname = '';
@@ -50,7 +50,7 @@ Run_Function.array.ATCNF = ( array ) => { // ATCNF = Array to Class Name Format
 
 };
 
-Run_Function.array.RAPEFA = ( array, item_no ) => { // RAPEFA = Remove a particular element from array
+export Run_Function.array.RAPEFA = ( array, item_no ) => { // RAPEFA = Remove a particular element from array
 
     var new_array = new Array();
 
