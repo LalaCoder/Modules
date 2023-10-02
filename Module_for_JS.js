@@ -61,7 +61,7 @@ Run_Function.array.RAPEFA = ( array, item_no ) => { // RAPEFA = Remove a particu
 
 };
 
-Run_Function.type.Identify = ( Data ) {
+Run_Function.type.Identify = ( Data ) => {
 
     const alphabets = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
