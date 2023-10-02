@@ -1,6 +1,7 @@
 var Run_Function = new Object();
 Run_Function.maths = new Object();
 Run_Function.array = new Object();
+Run_Function.type = new Object();
 
 Run_Function.maths.random = ( min, max ) => { max += 1; return ( Math.random() * ( max - min ) + min ); };
 
@@ -57,6 +58,22 @@ Run_Function.array.RAPEFA = ( array, item_no ) => { // RAPEFA = Remove a particu
     for ( var p = 0; p < array.length; p++ ) { if ( p != item_no ) { new_array.push( array[ p ] ) } };
 
     return new_array;
+
+};
+
+Run_Function.type.Identify = ( Data ) {
+
+    const alphabets = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
+    for (var sol = 0; sol < Data.length; sol++) {
+
+        for (var sov = 0; sov < 26; sov++) {
+
+            if ( Data[sol].toUpperCase() == alphabets[sov] ) { return "String"; };
+
+        };
+
+    }; return "int";
 
 };
 
