@@ -77,7 +77,7 @@ Run_Function.type.Identify = ( Data ) => {
 
 };
 
-Run_Function.array.removeItem = ( array, Item ) => {
+Run_Function.array.removeItem = ( array, item ) => {
 
     var new_array = new Array();
 
