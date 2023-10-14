@@ -67,7 +67,7 @@ const Key = {
 
         if ( typeof( Request_Response ) !== 'object' ) {
 
-            console.error( Request_Response + ' is not an Proper Object Data...!!!' );
+            console.error( Request_Response, 'is not an Proper Object Data...!!!' );
 
             return false;
 
@@ -169,12 +169,71 @@ const API = {
 
     },
 
-    Read: () => {
+    Service: {
 
-        const API = Database.Key.API_Connect();
-        const Data = JSON.parse( API.Data );
+        Read: () => {
 
-        return Data;
+            const API = Database.Key.API_Connect();
+            
+            if ( API != false ) { const Data = JSON.parse( API.Data ); return Data; };
+    
+            console.error( 'Cannot perform operation due to lack in Authorization...' ); return false;
+    
+        },
+
+        Update: ( Network ) => {
+
+            const API = Database.API.Service.Read();
+
+            if ( API != false ) {
+
+                const try_Network = Database.Key.Object_Type( Network );
+
+                if ( try_Network == true ) {
+
+                    if ( Network.Locate == null || Network.Update == null || Network.Alpha == null ) {
+
+                        console.warn(
+                            
+                            'The "OBJECT" ', Network ,
+                            'must contain the Locate, Update and Alpha Properties...!!!'
+                            
+                        ); return false;
+
+                    }; if ( typeof( Network.Locate ) !== 'string' || typeof( Network.Update ) !== 'string' ||
+
+                    typeof( Network.Alpha ) !== 'boolean' ) {
+
+                        return console.warn(
+
+                            'In Database.API.Service.Update( { "OBJECT" } );', '\n', '\n',
+                            'The Properties are not Used in an Proper Format -->', '\n',
+                            '\n', 'Format of "', Network.Locate, '" should be a String',
+                            '   --> Proper Formated :', typeof( Network.Locate ) === 'string',
+                            '\n', 'Format of "', Network.Update, '" should be a String',
+                            '   --> Proper Formated :', typeof( Network.Update ) === 'string',
+                            '\n', 'Format of "', Network.Alpha, '" should be a boolean i.e..',
+                            true, 'or', false, '...', '   --> Proper Formated :',
+                            typeof( Network.Alpha ) === 'boolean', '\n', '\n',
+                            'Any of these from', Network, 'is not in such Format...',
+                            '\n', '\n', 'Try Fixing that may solve the Problem...!!!'
+
+                        );
+
+                    }; //
+
+                } else {
+
+                    console.warn( Network, 'is not an Object...' );
+                    console.warn( 'Database.API.Service.Update( "OBJECT" ); is Expected...' );
+                    
+                    return false;
+
+                }; return console.log( 'Data Successfully Updated through API Service !' );
+
+            }; return false;
+
+        }
 
     },
 
