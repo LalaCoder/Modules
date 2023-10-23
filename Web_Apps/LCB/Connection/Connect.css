@@ -1,0 +1,19 @@
+body { width: 100vw; height: 100vh; overflow: hidden; background-color: #B6C9D5; }
+
+body { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+
+div { background-color: #ffffff; width: 60vw; height: 60vh; } span { right: 1rem; }
+
+div { display: flex; align-items: stretch; flex-wrap: wrap; justify-content: center; }
+
+h1, input, button { flex-basis: 100%; text-align: center; } button:hover { cursor: pointer; }
+
+h1 { font-size: 3rem; text-decoration: underline; color: rgba( 255, 0, 0, 0.8); }
+
+input { margin-left: 10vw; margin-right: 10vw; margin-bottom: 5vh; font-size: 1.5rem; }
+
+input { color: black; border: black solid 0.4rem; } span:hover { cursor: pointer; }
+
+button { margin-top: 5vh; color: red; font-size: 2rem; } a { color: black; } a:hover { cursor: pointer; }
+
+a, span { position: absolute; font-size: 1.5rem; bottom: 1rem; } a { left: 1rem; text-decoration: none; }

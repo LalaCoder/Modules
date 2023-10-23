@@ -1,0 +1,49 @@
+* { margin: 0; padding: 0; } footer h2 { margin-top: 0; height: 20rem; } table { border-collapse: collapse; }
+
+body { width: 100vw; height: 92vh; overflow-x: hidden; text-align: center; margin-top: 8vh; }
+
+h1, h2 { display: inline-block; } #Represent_Loan { margin-top: 0; } body { background-color: black; }
+
+h1 { font-size: 60px; margin-bottom: 45px; text-decoration: underline; color: white; }
+
+h2 { font-size: 65px; color: red; margin-bottom: 30px; position: relative; margin-top: 8rem; }
+
+table { border: 5px gray solid; margin-left: 2.5vw; background-color: white; width: 95vw; }
+
+tr { height: 5vh; font-size: 50px; } span { justify-content: center; } #Funder_Value { width: 25vw; }
+
+th { color: black; border: 4px black solid; } input, select, p { padding: 8px; }
+
+td { color: black; border: 4px black solid; } div { height: 10vh; width: 80vw; }
+
+button { width: 180px; height: 50px; position: absolute; right: 2.5vw; margin-top: 5vh; font-size: 20px; }
+
+button:hover { cursor: pointer; } button { border-radius: 40%; } div { margin-top: 25px; position: absolute; }
+
+div { display: flex; align-items: center; justify-content: space-evenly; margin-left: 2.5vw; flex-wrap: wrap; }
+
+input, select, p { font-size: 20px; border: white solid 5px; color: white; background-color: black; }
+
+span { display: inline-block; width: 250px; display: flex; flex-wrap: nowrap; align-items: center; }
+
+p { border-right: 0 black solid; } select { border-left: 0 black solid; border-bottom-width: 4px; }
+
+#Starting_Balance { width: 300px; } #Interest_Demand { width: 350px; } #Funder { width: 30vw; }
+
+#Add_Round, #Remove_Loan, #Update_Loan_Button { position: static; margin: 0; margin-bottom: 4vh; }
+
+#Special { width: 60vw; } footer { margin-top: 15rem; } #Fund { height: 100px; margin-top: 1vh; }
+
+#Update_Loan_Button { padding: 2.5px; } #Server button { border: solid 1rem blue; font-size: 2.5rem; }
+
+#Server button { border-radius: 0; width: 30rem; height: 20vh; } footer { width: 100vw; height: 30rem; }
+
+footer { position: relative; bottom: 0; margin-bottom: 10rem; display: flex; align-items: flex-start; }
+
+footer { justify-content: space-evenly; flex-wrap: wrap; } #Server { flex-wrap: wrap; }
+
+#Server { height: 20rem; width: 100vw; } #Server button { flex-basis: 40%; position: relative; }
+
+#Update_Loan { position: relative; margin-bottom: 12rem; } #Properties_Table { margin-bottom: 5rem; }
+
+#Stop_Market { color: cyan; width: 100vw; text-align: center; font-size: 4rem; margin-top: 12rem; }

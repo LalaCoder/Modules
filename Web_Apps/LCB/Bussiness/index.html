@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="Icon" type="image/x-icon" href="../Meta_Data/Logo.png" />
+
+    <script src="./Bank.js"></script>
+    <title> LCB </title>
+
+</head>
+
+<body>
+    
+    <h1> LCB - Ludo Chess Business </h1>
+    <br> <h2 id="Represent_Loan" > Business : Loans </h2> <br> 
+
+    <table id="Data" >
+
+        <tr>
+
+            <th> Name </th>
+            <th> Purpose </th>
+            <th> Amount </th>
+            <th> Interest </th>
+            <th> Rounds </th>
+            <th> Total Loan </th>
+
+        </tr>
+
+    </table>
+
+    <button id="Add" > + Add Loan </button>
+
+    <div>
+
+        <input type="text" id="name" placeholder="Enter Name" />
+
+        <span>
+
+            <p> Purpose : </p>
+        
+            <select id="purpose" >
+                
+                <option></option>
+                <option> Bank </option>
+
+            </select>
+
+        </span>
+
+        <input type="number" id="amount" placeholder="Enter Amount" />
+
+    </div>
+
+    <br> <h2 > Business : Accounts </h2> <br>
+
+    <table id="Accounts_Table" >
+
+        <tr>
+
+            <th> Name </th>
+            <th> Balance </th>
+            <th> Interest Demand </th>
+
+        </tr>
+
+    </table>
+
+    <button id="Add_Account" > + Add Account </button>
+
+    <div>
+
+        <input type="text" placeholder="Enter Your Name..." id="Name_Account" />
+        <input type="number" id="Starting_Balance" placeholder="Enter your starting Balance..." />
+        <input type="number" placeholder="Enter your Interest Demand in %..." id="Interest_Demand" />
+        
+    </div>
+
+    <br> <h2> Business : Updates </h2> <br>
+
+    <button id="Update_Account" > * Update Account </button>
+
+    <div>
+
+        <input type="text" placeholder="Name of the Member..." id="Update_Name" />
+        <input type="number" id="Update_Amount" placeholder="Amount to Add..." />
+        <input type="number" placeholder="Update Interest Demand..." id="Update_Interest" />
+        
+    </div>
+
+    <br><br><br><br><br><br>
+
+    <div id="Update_Loan" >
+
+        <table id="Special" >
+
+            <table>
+
+                <tr>
+
+                    <th><input type="text" placeholder="Name of the Member..." id="Update_Name++" /></th>
+                    <th><button id="Add_Round" > + Add 1 Round </button></th>
+    
+                </tr>
+
+            </table>
+
+            <table>
+
+                <tr>
+
+                    <th><input type="text" placeholder="Name of the Loan.." id="Loan_Name" /></th>
+                    <th><input type="text" placeholder="Purpose of the Loan..." id="Loan_Purpose" /></th>
+                    <th><button id="Remove_Loan" > - Remove this Loan </button></th>
+    
+                </tr>
+
+            </table>
+
+            <table>
+
+                <tr>
+
+                    <th><input type="text" placeholder="Name of the Loan..." id="Loan_Name++" /></th>
+                    <th><input type="text" placeholder="Purpose of the Loan..." id="Loan_Purpose++" /></th>
+                    <th><input type="number" placeholder="Amount to change..." id="Amount_to_change" /></th>
+                    <th><button id="Update_Loan_Button"> * Update Loan Amount </button></th>
+
+                </tr>
+
+            </table>
+
+        </table>
+    
+    </div>
+
+    <br> <h2> Business : Owned Properties </h2> <br>
+
+    <table id="Properties_Table" >
+
+        <tr>
+
+            <th>Owner</th>
+            <th>Properties</th>
+
+        </tr>
+
+    </table>
+
+    <div>
+
+        <input type="text" placeholder="Name of the Member" id="Property_Member_Name" />
+        <input type="text" placeholder="Property Name" id="Property_Name" />
+
+    </div>
+
+    <button id="Add_Property" > * Add Property </button>
+
+    <br> <h2> Bussiness : Last Locations </h2> <br>
+
+    <table id="Location_Table" >
+
+        <tr>
+
+            <th>Name</th>
+            <th>Last Location</th>
+
+        </tr>
+
+    </table>
+
+    <br> <h2> Bussiness : Funds </h2> <br>
+
+    <div>
+
+        <input type="text" placeholder="Name of the Funder..." id="Funder" />
+        <input type="number" placeholder="Amount to Fund..." id="Funder_Value" />
+
+    </div>
+
+    <button id="Fund" > Fund Money to Share Market </button>
+
+    <span id="Stop_Market" > Current Stop Market's Bank Interest Rate is : 2 % </span>
+
+    <footer>
+        
+        <h2> LCB Business Bank Coporation Limited © </h2>
+
+        <div id="Server" >
+
+            <button> Save Current Game </button>
+
+            <button> Update Current Game </button>
+
+        </div>
+    
+    </footer>
+
+</body>
+
+</html>
