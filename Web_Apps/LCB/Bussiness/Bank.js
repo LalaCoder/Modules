@@ -820,7 +820,45 @@ function Add_Property() {
     let Property_Member_Name = document.getElementById( 'Property_Member_Name' );
     let Property_Name = document.getElementById( 'Property_Name' );
 
-    console.log( Property_Member_Name, Property_Name );
+    let Properties_Table = document.getElementById( 'Properties_Table' );
+
+    let new_property = document.createElement( 'tr' );
+    let new_property_owner = document.createElement( 'th' );
+    let new_property_property = document.createElement( 'th' );
+
+    new_property_owner.innerHTML = Property_Member_Name.value;
+    new_property_property.innerHTML = Property_Name.value;
+
+    new_property.appendChild( new_property_owner );
+    new_property.appendChild( new_property_property );
+
+    Properties_Table.appendChild( new_property );
+
+    Property_Member_Name.value = '';
+    Property_Name.value = '';
+
+    alert( 'The Property with the Owner is Created...' );
+
+    function List_Properties() {
+
+        let All_Data = Properties_Table.querySelectorAll( 'tr' );
+        var Refined_Data = new Array();
+
+        for ( var b = 0; b < All_Data.length; b++ ) {
+
+            Refined_Data.push( All_Data[ b ].querySelectorAll( 'th' ) );
+
+        }; var resultant_Data = new Array();
+
+        for ( var a = 1; a < Refined_Data.length; a++ ) {
+
+            var initial_Array = [ Refined_Data[ a ][ 0 ], Refined_Data[ a ][ 1 ] ];
+
+            resultant_Data.push( initial_Array );
+
+        }; return resultant_Data;
+
+    }; return console.log( List_Properties() );
 
 };
 
