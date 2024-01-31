@@ -1,0 +1,11 @@
+body { background-color: #00000b; width: 100vw; height: 100vh; overflow: hidden; }
+
+h1 { position: fixed; left: 17.5rem; text-decoration: underline; color: blue; font-size: 3rem; }
+
+h3 { position: fixed; top: 6rem; left: 27.5rem; color: rgba( 255, 0, 0, 1 ); font-size: 1.7rem; }
+
+h1:hover { color: yellow; cursor: none; }
+
+h3:hover { font-size: 2rem; border: 0.2rem yellow solid; padding: 1rem; left: 24rem; cursor: none; }
+
+button:hover { cursor: pointer; }

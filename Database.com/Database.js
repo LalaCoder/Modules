@@ -1,8 +1,10 @@
 import { Run_Function } from 'https://lalacoder.github.io/Modules/Module_for_JS.js';
 
+const Server_connection_IP = 'https://script.google.com/macros/s/AKfycbzA8U_Truvlg3D6Wu9x7aimTymRjh5mKY8d_IDKnTTzjfrCgd5xGrdzKEL4WjlMY0KA/exec';
+
 const Key = {
 
-    Key: 'https://script.google.com/macros/s/AKfycbwQMf-OBKcGmtyIsQR_L3rrboKuZHxZx98Zp5OZ9jQlLr4y00x-z9PZJuqMtdoR5mYc/exec',
+    Key: Server_connection_IP,
 
     Web_Link: 'https://www.Database.com',
 
