@@ -1,0 +1,19 @@
+body { display: flex; justify-content: center; background-color: blue; } h1:hover { cursor: default; }
+
+h1 { color: yellow; background-color: black; } input { display: block; } button:hover { cursor: pointer; }
+
+input, p { font-size: 2rem; color: white; background-color: black; position: fixed; top: 65vh; }
+
+p { top: 40vh; font-size: 2rem; padding: 1rem; } input:hover { cursor: pointer; } p:hover { cursor: pointer; }
+
+.alert { border: yellow 0.8rem solid; padding: 1rem; } button { position: fixed; bottom: 8vh; padding: 1rem; }
+
+button { font-size: 2rem; border: 0.5rem yellowgreen double; visibility: hidden; }
+
+h3 { background-color: black; color: white; padding: 1rem; font-size: 3.5rem; position: fixed; top: 25vh; }
+
+i { font-size: 8rem; position: fixed; top: 65vh; padding: 1rem; color: white; }
+
+i { animation: loader 1s ease-in-out 10ms infinite normal none; }
+
+@keyframes loader { from { transform: rotate( 0deg ); } to { transform: rotate( 360deg ); } }
