@@ -1,0 +1,34 @@
+body { overflow: hidden; width: 100vw; height: 100vh; background-color: green; }
+
+header, footer { background-color: black; width: 100vw; height: 10vh; position: fixed; left: 0; }
+
+header { top: 0; text-align: center; } h1 { color: white; font-size: 2rem; } button:hover { cursor: pointer; } 
+
+footer { bottom: 0; display: flex; align-items: center; justify-content: space-evenly; }
+
+button { color: white; background-color: black; border: white double 0.2rem; padding: 0.5rem; }
+
+footer button { font-size: 1.5rem; } header:hover { cursor: default; } div.input { border: 0.8rem double black; }
+
+div.body { height: 70vh; width: 90vw; position: fixed; top: 15vh; left: 5vw; overflow: hidden; }
+
+footer button:hover { background-color: yellow; color: black; border-color: black; }
+
+div.body button { background-color: pink; color: black; border-radius: 20%; border-color: black; }
+
+div.body#cloud { overflow-y: scroll; } div.body#cloud button { position: absolute; font-size: 2rem; }
+
+div.input { position: absolute; width: 50vw; height: 50vh; top: 5.5vh; background-color: white; left: 18vw; }
+
+div.input input { border: black solid 0.4rem; font-size: 2rem; position: relative; top: 5rem; left: 8.5rem; }
+
+div.input button { position: relative; bottom: 2rem; right: 3rem; background-color: green; color: yellow; }
+
+::placeholder { color: black; } div.input button { border: 0.3rem red solid; } tr:hover { cursor: pointer; }
+
+tr { color: white; font-weight: 800; font-size: 2rem; } table { border: 0.4rem solid white; }
+
+div.body h1 { position: relative; left: 40vw; text-decoration: underline; font-size: 3rem; }
+
+div.body button.delete { position: relative; top: 2rem; right: 1rem; background-color: black; color: white;
+    border-color: white; font-size: 1rem; }
