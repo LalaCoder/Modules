@@ -1,6 +1,14 @@
 window.onload = () => {
 
-    if ( window.location.pathname.includes( 'index.html' ) ) {
+    if ( window.location.pathname.includes( 'process.html' ) ) {
+
+        setTimeout( () => {
+
+            return Modify_File( JSON.parse( sessionStorage.getItem( 'File' ) ) );
+
+        },1000 );
+        
+    } else {
 
         var p = document.body.querySelector( 'p' );
         var input = document.body.querySelector( 'input' );
@@ -42,14 +50,6 @@ window.onload = () => {
 
         });
 
-    } else if ( window.location.pathname.includes( 'process.html' ) ) {
-
-        setTimeout( () => {
-
-            return Modify_File( JSON.parse( sessionStorage.getItem( 'File' ) ) );
-
-        },1000 );
-        
     };
 
 };
