@@ -34,7 +34,7 @@ window.onload = () => {
 
             const Connect_Data = JSON.parse( sessionStorage.getItem( '<connect>' ) );
 
-            if ( ! ( Connect_Data.Accounts.length != 0 && Connect_Data.loans.length != 0 ) ) {
+            if ( ( Connect_Data.Accounts.length != 0 && Connect_Data.loans.length != 0 ) ) {
 
                 Read_Game_Data( Connect_Data );
 
