@@ -25,7 +25,7 @@ window.onload = () => {
 
         try {
 
-            image.src = './Images/Dhoni.png'; image.style.width = '1230px'; image.style.height = '424px';
+            image.src = './Images/Dhoni.png'; image.style.width = '100vw'; image.style.height = '80vh';
 
             body.appendChild( image ); setTimeout( () => { return animation_images( image ); },2000 );
 
@@ -81,7 +81,7 @@ function Teams() {
     data = JSON.parse( localStorage.getItem( 'cricket_scorer' ) );
 
     var add_team = document.createElement( 'button' ); add_team.innerHTML = 'Add Team';
-    add_team.style.bottom = '2rem'; add_team.style.right = '2rem';
+    add_team.style.bottom = '2vh'; add_team.style.right = '2vh';
 
     var list_teams = document.createElement( 'table' ); list_teams.style.width = '50vw';
 
@@ -129,7 +129,8 @@ function Teams() {
                     });
 
                     var add_player = document.createElement( 'button' ); add_player.innerHTML = 'Add Player';
-                    body.appendChild( add_player ); add_player.style.bottom = '2rem'; add_player.style.right = '2rem';
+                    body.appendChild( add_player ); add_player.style.bottom = '2.5vh';
+                    add_player.style.right = '2.5vh';
 
                     add_player.addEventListener( 'click', () => {
 
@@ -191,6 +192,8 @@ function Take_input( question, after_that ) {
 
     var div = document.createElement( 'div' ); var input = document.createElement( 'input' );
     input.type = 'text'; input.placeholder = question; div.appendChild( input );
+
+    div.addEventListener( 'dblclick', () => { return div.remove(); });
 
     input.addEventListener( 'keydown', ( event ) => {
 
