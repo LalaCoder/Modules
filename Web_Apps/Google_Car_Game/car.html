@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="Icon" type="Image/x-icon" href="https://www.gstatic.com/devrel-devsite/prod/v50a9748f336f0601961fb23638b43fbbc8f87f50f5f0aa83e2751247a72fbd3b/developers/images/favicon-new.png" />
+
+    <title> Google </title>
+
+</head>
+
+<body class="day" >
+
+    <div class="ground" ></div><div class="road" ></div><div id="car" ></div><div class="speedometer" ></div>
+    <div id="needle" class="-96deg" ></div><div id="sun_moon" class="0vw" ></div>
+    
+</body>
+
+</html>
+
+<style>
+
+    body { overflow: hidden; } div.speedometer { background-repeat: no-repeat; }
+    
+    div.ground { background-color: green; width: 100vw; height: 30vh; position: fixed; bottom: 0; left: 0; }
+
+    div.road { background-color: black; width: 100vw; height: 10vh; position: fixed; bottom: 30vh; left: 0; }
+
+    div#car { background-image: url( ./car.png ); width: 30vw; height: 50vh; position: absolute; bottom: 23.5vh; }
+
+    div#car { z-index: 1; background-repeat: no-repeat; background-size: 30vw 50vh; transform: scale( -1, 1 ); }
+
+    div.speedometer { height: 30vh; width: 30vw; position: fixed; top: 0; left: 35vw; z-index: 1; }
+
+    div.speedometer { background-size: 30vw 30vh; background-image: url( ./Speedometer.png ); }
+
+    div#needle { height: 12vh; width: 0.2vw; background-color: red; position: absolute; top: 11vh; left: 50vw; }
+
+    div#needle { border-radius: 30%; transform-origin: bottom right; transform: rotate( -96deg ); z-index: 1; }
+
+    div#sun_moon { width: 20vw; position: absolute; height: 20vh; top: 2vh; background-repeat: no-repeat; }
+
+    div#sun_moon { background-size: 20vw 20vh; right: 0; } body.day { background-color: skyblue; }
+
+    body.night { background-color: black; } body.day div#sun_moon { background-image: url( ./Sun.png ); }
+
+    div#sun_moon { transform: translate( 0vw ); }
+
+</style>
+
+<script>
+
+    window.onload = () => {
+
+        var car = document.getElementById( 'car' ); var needle = document.getElementById( 'needle' );
+
+        var sun_moon = document.getElementById( 'sun_moon' ); var velocity = 0; var sun_moon_acceleration = 0;
+
+        document.body.addEventListener( 'keypress', ( event ) => {
+
+            if ( event.key.toLowerCase() == 'a' ) {
+
+                var speed_angle = needle.className;
+
+                if ( needle.className == '90deg' ) {
+
+                    needle.className = '86deg'; return needle.style.transform = 'rotate( 86deg )';
+
+                };
+
+                speed_angle = ( parseFloat( speed_angle.slice( 0, -3 ) ) + 1 ) + 'deg';
+
+                needle.className = speed_angle;
+
+                velocity = Math.abs( parseFloat( speed_angle.slice( 0, -3 ) ) / 100 );
+
+                setTimeout( () => {
+
+                    needle.style.transform = 'rotate( ' + speed_angle + ' )';
+
+                    sun_moon_acceleration = ( parseFloat( ( sun_moon.className ).slice( 0, -2 ) ) + velocity * -1 );
+
+                    if ( sun_moon_acceleration < -90 ) {
+
+                        sun_moon.style.transform = 'translate( 0vw )'; return sun_moon.className = '0vw';
+                        
+                    };
+
+                    sun_moon_acceleration += 'vw';
+                    
+                    sun_moon.style.transform = 'translate( ' + sun_moon_acceleration + ' )';
+
+                    sun_moon.className = sun_moon_acceleration;
+
+                },100 );
+
+            };
+
+        });
+
+        document.body.addEventListener( 'keyup', ( event ) => {
+
+            setTimeout( () => {
+
+                if ( event.key.toLowerCase() == 'a' ) {
+
+                    var speed_angle = needle.className; var initial_velocity = 0;
+
+                    while ( speed_angle != '-96deg' ) {
+
+                        velocity = Math.abs( parseFloat( speed_angle.slice( 0, -3 ) ) / 300 );
+                        
+                        speed_angle = ( parseFloat( speed_angle.slice( 0, -3 ) ) - 1 ) + 'deg';
+
+                        needle.className = speed_angle; initial_velocity++;
+                        
+                        reduce( speed_angle, initial_velocity, velocity );
+
+                    };
+
+                    function reduce( angle, initial_velocity, final_velocity ) {
+
+                        setTimeout( () => {
+
+                            needle.style.transform = 'rotate( ' + angle + ' )';
+
+                            sun_moon_acceleration = parseFloat( ( sun_moon.className ).slice( 0, -2 ) );
+
+                            sun_moon_acceleration += velocity * -1;
+                            
+                            if ( sun_moon_acceleration < -90 ) {
+
+                                sun_moon.style.transform = 'translate( 0vw )'; return sun_moon.className = '0vw';
+
+                            };
+
+                            sun_moon_acceleration += 'vw';
+                            
+                            sun_moon.style.transform = 'translate( ' + sun_moon_acceleration + ' )';
+
+                            sun_moon.className = sun_moon_acceleration;
+
+                        },20 * initial_velocity );
+
+                    };
+
+                };                
+                
+            },100 );
+
+        });
+
+    };
+    
+</script>

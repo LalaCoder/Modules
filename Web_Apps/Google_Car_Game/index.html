@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="Icon" type="Image/x-icon" href="https://www.gstatic.com/devrel-devsite/prod/v50a9748f336f0601961fb23638b43fbbc8f87f50f5f0aa83e2751247a72fbd3b/developers/images/favicon-new.png" />
+
+    <title> Google </title>
+
+</head>
+
+<body>
+    
+    <button> Sign In with a google account </button>
+
+    <button> Sign In as a Local Guest </button>
+
+</body>
+
+</html>
+
+<style>
+
+    body { background-color: pink; display: flex; align-items: center; justify-content: center; height: 90vh; }
+
+    body { width: 100vw; overflow: hidden; } body:hover { cursor: crosshair; } button:hover { cursor: pointer; }
+
+    button { font-size: 10vh; background-color: black; color: red; padding: 2vh; display: inline-block; }
+    
+    iframe { width: 70vw; height: 70vh; } body { flex-wrap: wrap; flex-basis: 100%; }
+
+</style>
+
+<script>
+
+    window.onload = () => {
+
+        var All_buttons = document.body.querySelectorAll( 'button' );
+
+        function Remove_All() {
+
+            for ( var a = 0; a < All_buttons.length; a++ ) {
+
+                All_buttons[ a ].remove();
+
+            };
+
+        };
+
+        All_buttons[ 0 ].addEventListener( 'click', () => {
+
+            var iframe = document.createElement( 'iframe' );
+
+            document.body.appendChild( iframe );
+
+            iframe.src = 'https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%2F&ec=GAZAmgQ&hl=en&ifkv=ATuJsjxU0nZXoYWl1mQMyWLYq3wEEuM10bDoUzgOnllS5vMGpBqZgKuJRbb0aj_YigViunAed7xr&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-620509504%3A1709209943253530&theme=glif';
+
+            Remove_All(); return console.log( 'Requesting Google Service provider...', 'Request Failed ! ' );
+
+        });
+
+        All_buttons[ 1 ].addEventListener( 'click', () => {
+
+            Remove_All(); return window.location.assign( './car.html' );
+
+        });
+
+    };
+
+</script>
