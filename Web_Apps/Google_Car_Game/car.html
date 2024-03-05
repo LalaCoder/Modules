@@ -59,6 +59,8 @@
 
         var sun_moon = document.getElementById( 'sun_moon' ); var velocity = 0; var sun_moon_acceleration = 0;
 
+        var speed_down_meter = true;
+
         document.body.addEventListener( 'keypress', ( event ) => {
 
             if ( event.key.toLowerCase() == 'a' ) {
@@ -69,17 +71,19 @@
 
                     needle.className = '86deg'; return needle.style.transform = 'rotate( 86deg )';
 
+                }; if ( speed_down_meter == true ) {
+
+                    speed_angle = ( parseFloat( speed_angle.slice( 0, -3 ) ) + 1 ) + 'deg';
+
+                    needle.className = speed_angle;
+
                 };
-
-                speed_angle = ( parseFloat( speed_angle.slice( 0, -3 ) ) + 1 ) + 'deg';
-
-                needle.className = speed_angle;
 
                 velocity = Math.abs( parseFloat( speed_angle.slice( 0, -3 ) ) / 100 );
 
                 setTimeout( () => {
 
-                    needle.style.transform = 'rotate( ' + speed_angle + ' )';
+                    if ( speed_down_meter == true ) { needle.style.transform = 'rotate( ' + speed_angle + ' )'; };
 
                     sun_moon_acceleration = ( parseFloat( ( sun_moon.className ).slice( 0, -2 ) ) + velocity * -1 );
 
@@ -97,7 +101,7 @@
 
                 },100 );
 
-            };
+            } else if ( event.key.toLowerCase() == 'w' ) { return speed_down_meter = false; };
 
         });
 
@@ -113,19 +117,25 @@
 
                         velocity = Math.abs( parseFloat( speed_angle.slice( 0, -3 ) ) / 300 );
                         
-                        speed_angle = ( parseFloat( speed_angle.slice( 0, -3 ) ) - 1 ) + 'deg';
+                        if ( speed_down_meter == true ) {
 
-                        needle.className = speed_angle; initial_velocity++;
-                        
-                        reduce( speed_angle, initial_velocity, velocity );
+                            speed_angle = ( parseFloat( speed_angle.slice( 0, -3 ) ) - 1 ) + 'deg';
+
+                            needle.className = speed_angle; initial_velocity++;
+
+                        }; reduce( speed_angle, initial_velocity, velocity, speed_down_meter );
 
                     };
 
-                    function reduce( angle, initial_velocity, final_velocity ) {
+                    function reduce( angle, initial_velocity, final_velocity, down_meter ) {
 
                         setTimeout( () => {
 
-                            needle.style.transform = 'rotate( ' + angle + ' )';
+                            if ( down_meter == true ) {
+
+                                needle.style.transform = 'rotate( ' + angle + ' )';
+
+                            };
 
                             sun_moon_acceleration = parseFloat( ( sun_moon.className ).slice( 0, -2 ) );
 
@@ -147,7 +157,7 @@
 
                     };
 
-                };                
+                } else if ( event.key.toLowerCase() == 'w' ) { return speed_down_meter = true; };                
                 
             },100 );
 
