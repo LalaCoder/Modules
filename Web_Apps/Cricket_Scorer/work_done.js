@@ -1,10 +1,4 @@
-const deafault_settings = {
-
-    Teams: [],
-    History: [],
-    Settings:[]
-
-};
+const deafault_settings = { Teams: [], History: [], Settings:[] };
 
 window.onload = () => {
 
@@ -140,8 +134,8 @@ function Teams() {
 
                                 name: answer, score: 0, sixes: 0, fours: 0, wickets_taken: 0, bowled_given: 0,
                                 caught: 0, hit_wicket: 0, wide: 0, stumping: 0, catch_out: 0, run_out: 0,
-                                stumped: 0, catch_taken: 0, bowl_faced: 0, strike_rate, half_centuries: 0,
-                                centuries, double_centuries, triple_centuries: 0, Hattrick: 0, captainship: 0,
+                                stumped: 0, catch_taken: 0, bowl_faced: 0, strike_rate: 0, half_centuries: 0,
+                                centuries: 0, double_centuries: 0, triple_centuries: 0, Hattrick: 0, captainship: 0,
                                 won_on_your_captionship: 0, lose_on_your_captainship: 0, Man_of_the_Match: 0,
                                 Matches_played: 0
 
@@ -164,7 +158,87 @@ function Teams() {
                             tr = document.createElement( 'tr' ); table.appendChild( tr );
                             tr.className = b; tr.innerHTML = data.Teams[ number ].players[ b ].name;
 
-                            tr.addEventListener( 'click', () => {});
+                            tr.addEventListener( 'click', ( event ) => {
+
+                                var player = event.target.innerHTML; body.innerHTML = '';
+                                var player_heading = document.createElement( 'h1' );
+                                player_heading.innerHTML = player; body.appendChild( player_heading );
+                                var grid = document.createElement( 'table' ); body.appendChild( grid );
+                                grid.className = 'grid-set-of-players-data';
+                                
+                                var first_row = grid.insertRow( 0 );
+                                var second_row = grid.insertRow( 1 );
+                                var third_row = grid.insertRow( 2 );
+                                var fourth_row = grid.insertRow( 3 );
+                                var fifth_row = grid.insertRow( 4 );
+
+                                var score = first_row.insertCell( 0 );
+                                var sixes = first_row.insertCell( 1 );
+                                var fours = first_row.insertCell( 2 );
+                                var wickets_taken = first_row.insertCell( 3 );
+                                var bowled_given = first_row.insertCell( 4 );
+
+                                var caught = second_row.insertCell( 0 );
+                                var hit_wicket = second_row.insertCell( 1 );
+                                var wide = second_row.insertCell( 2 );
+                                var stumping = second_row.insertCell( 3 );
+                                var catch_out = second_row.insertCell( 4 );
+
+                                var run_out = third_row.insertCell( 0 );
+                                var stumped = third_row.insertCell( 1 );
+                                var catch_taken = third_row.insertCell( 2 );
+                                var bowl_faced = third_row.insertCell( 3 );
+                                var strike_rate = third_row.insertCell( 4 );
+
+                                var half_centuries = fourth_row.insertCell( 0 );
+                                var centuries = fourth_row.insertCell( 1 );
+                                var double_centuries = fourth_row.insertCell( 2 );
+                                var triple_centuries = fourth_row.insertCell( 3 );
+                                var Hattrick = fourth_row.insertCell( 4 );
+
+                                var captainship = fifth_row.insertCell( 0 );
+                                var won_on_your_captionship = fifth_row.insertCell( 1 );
+                                var lose_on_your_captainship = fifth_row.insertCell( 2 );
+                                var Man_of_the_Match = fifth_row.insertCell( 3 );
+                                var Matches_played = fifth_row.insertCell( 4 );
+
+                                score.innerHTML = 'score';
+                                sixes.innerHTML = 'sixes';
+                                fours.innerHTML = 'fours';
+                                wickets_taken.innerHTML = 'wickets_taken';
+                                bowled_given.innerHTML = 'bowled_given';
+
+                                caught.innerHTML = 'caught';
+                                hit_wicket.innerHTML = 'hit_wicket';
+                                wide.innerHTML = 'wide';
+                                stumping.innerHTML = 'stumping';
+                                catch_out.innerHTML = 'catch_out';
+
+                                run_out.innerHTML = 'run_out';
+                                stumped.innerHTML = 'stumped';
+                                catch_taken.innerHTML = 'catch_taken';
+                                bowl_faced.innerHTML = 'bowl_faced';
+                                strike_rate.innerHTML = 'strike_rate';
+
+                                half_centuries.innerHTML = 'half_centuries';
+                                centuries.innerHTML = 'centuries';
+                                double_centuries.innerHTML = 'double_centuries';
+                                triple_centuries.innerHTML = 'triple_centuries';
+                                Hattrick.innerHTML = 'Hattrick';
+
+                                captainship.innerHTML = 'captainship';
+                                won_on_your_captionship.innerHTML = 'won_on_your_captionship';
+                                lose_on_your_captainship.innerHTML = 'lose_on_your_captainship';
+                                Man_of_the_Match.innerHTML = 'Man_of_the_Match';
+                                Matches_played.innerHTML = 'Matches_played';
+
+                                bowled_given.className = 'last';
+                                catch_out.className = 'last';
+                                strike_rate.className = 'last';
+                                Hattrick.className = 'last';
+                                Matches_played.className = 'last';
+
+                            });
 
                         };
 

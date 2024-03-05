@@ -37,3 +37,13 @@ div.body button.delete { position: relative; bottom: 12vh; right: 1vw; backgroun
 @media ( min-width: 1000px ) { div.input { width: 45vw; left: 20vw; } div.input input { font-size: 3.5vh; } }
 
 @media ( max-width: 300px ) { h1 { font-size: 2.8vh; } div.input input { left: 2vh; } }
+
+table.grid-set-of-players-data tr { height: 5vh; } table.grid-set-of-players-data tr:hover { cursor: default; }
+
+table.grid-set-of-players-data tr { display: flex; align-items: center; justify-content: space-evenly; }
+
+table.grid-set-of-players-data td { display: flex; align-items: center; justify-content: space-evenly; }
+
+table.grid-set-of-players-data { display: flex; align-items: center; justify-content: space-evenly; }
+
+table.grid-set-of-players-data td { padding-right: 20vh; } table.grid-set-of-players-data.last { padding-right: 0; }
