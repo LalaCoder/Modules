@@ -1,11 +1,19 @@
-body { background-color: #00000b; width: 100vw; height: 100vh; overflow: hidden; }
+body.index { background-color: #00000b; width: 100vw; height: 100vh; overflow: hidden; }
 
-h1 { position: fixed; left: 17.5rem; text-decoration: underline; color: blue; font-size: 3rem; }
+h1.index { position: fixed; left: 17.5rem; text-decoration: underline; color: blue; font-size: 3rem; }
 
-h3 { position: fixed; top: 6rem; left: 27.5rem; color: rgba( 255, 0, 0, 1 ); font-size: 1.7rem; }
+h3.index { position: fixed; top: 6rem; left: 27.5rem; color: rgba( 255, 0, 0, 1 ); font-size: 1.7rem; }
 
-h1:hover { color: yellow; cursor: none; }
+h1.index:hover { color: yellow; cursor: none; } button.index:hover { cursor: pointer; }
 
-h3:hover { font-size: 2rem; border: 0.2rem yellow solid; padding: 1rem; left: 24rem; cursor: none; }
+h3.index:hover { font-size: 2rem; border: 0.2rem yellow solid; padding: 1rem; left: 24rem; cursor: none; }
 
-button:hover { cursor: pointer; }
+button.index { font-size: 2rem; position: fixed; bottom: 5vh; border: white 0.2rem solid; }
+
+div.index { background-image: url( ./Home.png ); position: fixed; width: 90vw; height: 40vh; top: 40vh; left: 5vw; }
+
+div.index { background-repeat: no-repeat; background-size: 90vw 40vh; } button.index { padding: 0.5rem; }
+
+button.index { color: green; background-color: black; } button.index.two { right: 10vw; }
+
+button.index:hover { background-color: yellow; color: red; border-color: violet; } button.index.one { left: 10vw; }
