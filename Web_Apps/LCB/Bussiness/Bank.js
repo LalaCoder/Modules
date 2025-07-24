@@ -120,6 +120,12 @@ function Initialise_Listeners() {
     let Add_Property_button = document.getElementById( 'Add_Property' );
     Add_Property_button.addEventListener( 'click', Add_Property );
 
+    let Edit_Last_Location_Btn = document.getElementById( 'Edit_Last_Location_Btn' );
+    Edit_Last_Location_Btn.addEventListener( 'click', Edit_Last_Location );
+
+    let Delete_Property_button = document.getElementById( 'Delete_Property' );
+    Delete_Property_button.addEventListener( 'click', Delete_Property );
+
 };
 
 function Update_Game_Data() {
@@ -822,43 +828,135 @@ function Add_Property() {
 
     let Properties_Table = document.getElementById( 'Properties_Table' );
 
-    let new_property = document.createElement( 'tr' );
-    let new_property_owner = document.createElement( 'th' );
-    let new_property_property = document.createElement( 'th' );
+    let rows = Properties_Table.getElementsByTagName("tr");
 
-    new_property_owner.innerHTML = Property_Member_Name.value;
-    new_property_property.innerHTML = Property_Name.value;
+    let found = false;
 
-    new_property.appendChild( new_property_owner );
-    new_property.appendChild( new_property_property );
+    for (let i = 1; i < rows.length; i++) {
 
-    Properties_Table.appendChild( new_property );
+        let nameCell = rows[i].getElementsByTagName("td")[0]; // Column A
+        let propCell = rows[i].getElementsByTagName("td")[1]; // Column B
 
-    Property_Member_Name.value = '';
-    Property_Name.value = '';
+        if (nameCell && nameCell.innerText === Property_Member_Name.value) {
+        let currentValue = propCell.innerText.trim();
 
-    alert( 'The Property with the Owner is Created...' );
+        if (currentValue.includes(",")) {
 
-    function List_Properties() {
+            // Prepend property to existing value
+            propCell.innerText = Property_Name.value + ", " + currentValue;
 
-        let All_Data = Properties_Table.querySelectorAll( 'tr' );
-        var Refined_Data = new Array();
+        } else {
+            // Replace value with property + comma
+            propCell.innerText = Property_Name.value + ",";
+        }
 
-        for ( var b = 0; b < All_Data.length; b++ ) {
+        found = true; break;
 
-            Refined_Data.push( All_Data[ b ].querySelectorAll( 'th' ) );
+        }
+    }
 
-        }; var resultant_Data = new Array();
+    if (found) { alert( 'The Property with the Owner is Created...' ); }
+    else { alert("Member with the name " + String( Property_Member_Name.value ) + " not found!"); }
 
-        for ( var a = 1; a < Refined_Data.length; a++ ) {
+};
 
-            var initial_Array = [ Refined_Data[ a ][ 0 ], Refined_Data[ a ][ 1 ] ];
+function Delete_Property() {
 
-            resultant_Data.push( initial_Array );
+    let Property_Member_Name = document.getElementById( 'Property_Member_Name_2' );
+    let Property_Name = document.getElementById( 'Property_Name_2' );
 
-        }; return resultant_Data;
+    let Properties_Table = document.getElementById( 'Properties_Table' );
 
-    }; return console.log( List_Properties() );
+    let rows = Properties_Table.getElementsByTagName("tr");
+
+    let found = false;
+
+    for (let i = 1; i < rows.length; i++) {
+        
+        let nameCell = rows[i].getElementsByTagName("td")[0]; // Name column
+        let propCell = rows[i].getElementsByTagName("td")[1]; // Properties column
+
+        if (nameCell && nameCell.innerText === Property_Member_Name.value ) {
+
+            found = true;
+
+            let currentValue = propCell.innerText.trim();
+
+            // If already "No Properties Yet", nothing to delete
+
+            if (currentValue === "No Properties Yet") {
+
+                alert("No properties to delete for this member!");
+                return;
+            };
+
+            // Split into array, trim spaces
+
+            let propertiesArray = currentValue.split(",").map(p => p.trim());
+
+            // Remove property if exists
+
+            let updatedArray = propertiesArray.filter(p => p !== Property_Name.value);
+
+            if (updatedArray.length === propertiesArray.length) {
+
+                alert("Property not found for this member!");
+                return;
+
+            }
+
+            // If no properties left, show default message
+
+            if (updatedArray.length === 0) {
+
+                propCell.innerText = "No Properties Yet";
+
+            } else {
+
+                propCell.innerText = updatedArray.join(", ");
+
+            };
+
+            alert("Property deleted successfully!"); break;
+
+        };
+
+    };
+
+    if (!found) { alert("Member with the name " + String( Property_Member_Name.value ) + " not found!"); }
+
+};
+
+function Edit_Last_Location() {
+
+    let Member_name = document.getElementById( 'Last_Location_Member_Name' );
+    let Last_Location = document.getElementById( 'Edit_Last_Location' );
+    let Location_Table = document.getElementById( 'Location_Table' );
+
+    let rows = Location_Table.getElementsByTagName("tr");
+
+    let found = false;
+
+    // Loop through rows starting from index 1 (to skip header row)
+
+    for (let i = 1; i < rows.length; i++) {
+
+        let nameCell = rows[i].getElementsByTagName("td")[0]; // Name column
+        let locationCell = rows[i].getElementsByTagName("td")[1]; // Last location column
+
+        if (nameCell && nameCell.innerText === Member_name.value) {
+
+            locationCell.innerText = Last_Location.value;  // Update location
+            found = true; break;
+
+        };
+
+    }
+
+    // Show alert
+
+    if (found) { alert("Last Location Updated successfully !");
+    } else { alert("Member with the name " + String( Member_name.value ) + " not found!"); }
 
 };
 
