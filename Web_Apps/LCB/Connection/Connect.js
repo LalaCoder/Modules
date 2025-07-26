@@ -81,6 +81,8 @@ function Import_Data() {
 
         Back_up[ 'Code' ][ 'localhost:9211' ][ 'Data' ][ 'loans' ] = [];
         Back_up[ 'Code' ][ 'localhost:9211' ][ 'Data' ][ 'Accounts' ] = [];
+        Back_up[ 'Code' ][ 'localhost:9211' ][ 'Data' ][ 'Properties' ] = [];
+        Back_up[ 'Code' ][ 'localhost:9211' ][ 'Data' ][ 'Locations' ] = [];
 
         Back_up = JSON.stringify( Back_up );
         localStorage.setItem( 'Game', Back_up );

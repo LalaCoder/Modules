@@ -50,6 +50,8 @@ function Read_Game_Data( Data_Set ) {
 
     let Accounts = document.getElementById( 'Accounts_Table' );
     let Loans = document.getElementById( 'Data' );
+    let Properties = document.getElementById( 'Properties_Table' );
+    let Location = document.getElementById( 'Location_Table' );
 
     var Cell, Row;
 
@@ -82,6 +84,36 @@ function Read_Game_Data( Data_Set ) {
         }; Loans.appendChild( Row );
 
     }; // For Loans Readings...
+
+    for ( var c = 0; c < Data_Set[ 'Properties' ].length; c++ ) {
+
+        Row = document.createElement( 'tr' );
+
+        for ( var d = 0; d < Data_Set[ 'Properties' ][ c ].length; d++ ) {
+
+            Cell = document.createElement( 'td' );
+            Cell.textContent = Data_Set[ 'Properties' ][ c ][ d ];
+
+            Row.appendChild( Cell );
+
+        }; Properties.appendChild( Row );
+
+    }; // For Properties Readings...
+
+    for ( var c = 0; c < Data_Set[ 'Locations' ].length; c++ ) {
+
+        Row = document.createElement( 'tr' );
+
+        for ( var d = 0; d < Data_Set[ 'Locations' ][ c ].length; d++ ) {
+
+            Cell = document.createElement( 'td' );
+            Cell.textContent = Data_Set[ 'Locations' ][ c ][ d ];
+
+            Row.appendChild( Cell );
+
+        }; Location.appendChild( Row );
+
+    }; // For Locations Readings...
 
 };
 
@@ -511,16 +543,19 @@ function Add_Member_Round() {
 
                 return alert( 'Sorry ! Your Loan Provider does not Exists any more...' );
 
-            }; const Loan_Provider_Interest_Demand =
-            parseFloat( Seperate_Percentage( Account[ Loan_Provider_Number ][ 2 ].innerHTML ) );
+            };
+            
+            Interest = parseFloat( Seperate_Percentage( Account[ Loan_Provider_Number ][ 2 ].innerHTML ) );
 
-            const Time = parseFloat( Loans[ Loan_Number ][ 4 ].innerHTML );
-
-            Interest = Calculate_Simple_Interest( Amount, Loan_Provider_Interest_Demand, Time );
-
-        }; Loans[ Loan_Number ][ 3 ].innerHTML = Interest;
+        };
 
         Loans[ Loan_Number ][ 4 ].innerHTML = parseFloat( Loans[ Loan_Number ][ 4 ].innerHTML ) + 1;
+
+        const Time = parseFloat( Loans[ Loan_Number ][ 4 ].innerHTML );
+
+        Interest = Calculate_Simple_Interest( Amount, Interest, Time );
+        
+        Loans[ Loan_Number ][ 3 ].innerHTML = Interest;
 
         Loans[ Loan_Number ][ 5 ].innerHTML = parseFloat( Loans[ Loan_Number ][ 2 ].innerHTML ) +
         parseFloat( Loans[ Loan_Number ][ 3 ].innerHTML );
@@ -547,6 +582,36 @@ function List_Loans( type_bollean ) {
     for ( var a = 1; a < Loans_Table.length; a++ ) {
         
         Data.push( Loans_Table[ a ].querySelectorAll( 'td' ) );
+    
+    }; return Data;
+
+};
+
+function List_Properties() {
+
+    let Properties_Table = document.getElementById( 'Properties_Table' );
+    Properties_Table = Properties_Table.querySelectorAll( 'tr' );
+
+    var Data = new Array();
+
+    for ( var a = 1; a < Properties_Table.length; a++ ) {
+        
+        Data.push( Properties_Table[ a ].querySelectorAll( 'td' ) );
+    
+    }; return Data;
+
+};
+
+function List_Locations() {
+
+    let Location_Table = document.getElementById( 'Location_Table' );
+    Location_Table = Location_Table.querySelectorAll( 'tr' );
+
+    var Data = new Array();
+
+    for ( var a = 1; a < Location_Table.length; a++ ) {
+        
+        Data.push( Location_Table[ a ].querySelectorAll( 'td' ) );
     
     }; return Data;
 
@@ -655,12 +720,18 @@ function Collect_All_Data() {
 
     const Accounts = List_Accounts_Names( false );
     const Loans = List_Loans( true );
+    const Properties = List_Properties();
+    const Location = List_Locations();
 
     var Save_Accounts = new Array();
     var Save_Loans = new Array();
+    var Save_Properties = new Array();
+    var Save_Location = new Array();
 
     var Current_Account = new Array();
     var Current_Loan = new Array();
+    var Current_Properties = new Array();
+    var Current_Location = new Array();
 
     for ( var a = 0; a < Accounts.length; a++ ) {
 
@@ -682,10 +753,32 @@ function Collect_All_Data() {
 
         }; Save_Loans.push( Current_Loan );
 
+    }; for ( var c = 0; c < Properties.length; c++ ) {
+
+        Current_Properties = new Array();
+
+        for ( var d = 0; d < Properties[ c ].length; d++ ) {
+
+            Current_Properties.push( Properties[ c ][ d ].innerHTML );
+
+        }; Save_Properties.push( Current_Properties );
+
+    }; for ( var c = 0; c < Location.length; c++ ) {
+
+        Current_Location = new Array();
+
+        for ( var d = 0; d < Location[ c ].length; d++ ) {
+
+            Current_Location.push( Location[ c ][ d ].innerHTML );
+
+        }; Save_Location.push( Current_Location );
+
     }; var Overall_Data = new Array();
 
     Overall_Data.push( Save_Accounts );
     Overall_Data.push( Save_Loans );
+    Overall_Data.push( Save_Properties );
+    Overall_Data.push( Save_Location );
 
     return Overall_Data;
 
@@ -744,6 +837,8 @@ function Save_Game() {
         Game.Code[ Game_Code ].Data = new Object();
         Game.Code[ Game_Code ].Data.loans = Overall_Data[ 1 ];
         Game.Code[ Game_Code ].Data.Accounts = Overall_Data[ 0 ];
+        Game.Code[ Game_Code ].Data.Properties = Overall_Data[ 2 ];
+        Game.Code[ Game_Code ].Data.Locations = Overall_Data[ 3 ];
 
         Game = JSON.stringify( Game );
         localStorage.setItem( 'Game', Game );
@@ -838,19 +933,20 @@ function Add_Property() {
         let propCell = rows[i].getElementsByTagName("td")[1]; // Column B
 
         if (nameCell && nameCell.innerText === Property_Member_Name.value) {
-        let currentValue = propCell.innerText.trim();
+            
+            let currentValue = propCell.innerText.trim();
 
-        if (currentValue.includes(",")) {
+            if (currentValue === "" || currentValue === "No Properties Yet") {
 
-            // Prepend property to existing value
-            propCell.innerText = Property_Name.value + ", " + currentValue;
+                propCell.innerText = Property_Name.value;
+            
+            } else {
 
-        } else {
-            // Replace value with property + comma
-            propCell.innerText = Property_Name.value + ",";
-        }
+                propCell.innerText = Property_Name.value + ", " + currentValue;
 
-        found = true; break;
+            };
+
+            found = true; break;
 
         }
     }
@@ -892,7 +988,7 @@ function Delete_Property() {
 
             // Split into array, trim spaces
 
-            let propertiesArray = currentValue.split(",").map(p => p.trim());
+            let propertiesArray = currentValue.split(",").map(p => p.trim()).filter(p => p !== "");
 
             // Remove property if exists
 
