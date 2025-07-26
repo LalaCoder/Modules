@@ -169,6 +169,8 @@ function Update_Game_Data() {
 
     Game.Code[ Registry ].Data.Accounts = Overall_Data[ 0 ];
     Game.Code[ Registry ].Data.loans = Overall_Data[ 1 ];
+    Game.Code[ Registry ].Data.Properties = Overall_Data[ 2 ];
+    Game.Code[ Registry ].Data.Locations = Overall_Data[ 3 ];
 
     var connect = Game.Code[ Registry ].Data;
     connect = JSON.stringify( connect );
